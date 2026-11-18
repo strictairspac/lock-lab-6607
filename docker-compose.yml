@@ -32,6 +32,9 @@ services:
       REDIS_URL: redis://redis:6379/0
       JWT_SECRET: ${JWT_SECRET:-local-lock-lab-change-before-public-use}
       SEED_DEMO: ${SEED_DEMO:-true}
+      BACKUP_DIR: /artifacts/backups
+      BACKUP_INTERVAL_MINUTES: ${BACKUP_INTERVAL_MINUTES:-0}
+      RESTORE_DATABASE_URL: postgresql+psycopg://locklab:${DB_PASSWORD:-locklab_demo_pw}@db:5432/locklab_restore
     ports: ["${BACKEND_PORT:-19242}:8000"]
     volumes: [run-artifacts:/artifacts]
     depends_on:
